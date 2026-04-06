@@ -24,6 +24,23 @@ router.get("/users", authMiddleware, adminOnly, async (req, res) => {
   }
 });
 
+// ✅ DELETE user
+router.delete("/users/:id", authMiddleware, adminOnly, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    await user.deleteOne();
+
+    res.json({ message: "User deleted" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // GET all portfolios
 router.get("/portfolios", authMiddleware, adminOnly, async (req, res) => {
   try {
@@ -34,20 +51,18 @@ router.get("/portfolios", authMiddleware, adminOnly, async (req, res) => {
   }
 });
 
-// DELETE content (example: project)
-router.delete("/content/:id", authMiddleware, adminOnly, async (req, res) => {
+// DELETE portfolio
+router.delete("/portfolios/:id", authMiddleware, adminOnly, async (req, res) => {
   try {
-    const Project = require("../models/Project");
+    const portfolio = await Portfolio.findById(req.params.id);
 
-    const project = await Project.findById(req.params.id);
-
-    if (!project) {
-      return res.status(404).json({ message: "Content not found" });
+    if (!portfolio) {
+      return res.status(404).json({ message: "Portfolio not found" });
     }
 
-    await project.deleteOne();
+    await portfolio.deleteOne();
 
-    res.json({ message: "Content deleted by admin" });
+    res.json({ message: "Portfolio deleted" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

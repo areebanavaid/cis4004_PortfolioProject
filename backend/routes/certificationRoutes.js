@@ -3,79 +3,43 @@ const router = express.Router();
 const Certification = require("../models/Certification");
 const authMiddleware = require("../middleware/authMiddleware");
 
-// GET all certs for logged-in user
 router.get("/", authMiddleware, async (req, res) => {
   try {
-    const certs = await Certification.find({ username: req.user.username });
+    const certs = await Certification.find({ user: req.user.id });
     res.json(certs);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// GET public portfolio certs by username
-router.get("/user/:username", async (req, res) => {
-  try {
-    const certs = await Certification.find({ username: req.params.username });
-    res.json(certs);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
-// POST create new cert
 router.post("/", authMiddleware, async (req, res) => {
   try {
-    const cert = new Certification({
-      ...req.body,
-      username: req.user.username
-    });
-
-    const saved = await cert.save();
-    res.status(201).json(saved);
+    const cert = await Certification.create({ ...req.body, user: req.user.id });
+    res.status(201).json(cert);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 });
 
-// PUT update cert (only owner)
 router.put("/:id", authMiddleware, async (req, res) => {
   try {
-    const cert = await Certification.findOne({
-      _id: req.params.id,
-      username: req.user.username
-    });
-
-    if (!cert) {
-      return res.status(403).json({ message: "Not authorized" });
-    }
-
-    cert.title = req.body.title ?? cert.title;
-    cert.issuer = req.body.issuer ?? cert.issuer;
-    cert.date = req.body.date ?? cert.date;
-    cert.description = req.body.description ?? cert.description;
-
-    const updated = await cert.save();
+    const cert = await Certification.findById(req.params.id);
+    if (!cert) return res.status(404).json({ message: "Not found" });
+    if (cert.user.toString() !== req.user.id) return res.status(403).json({ message: "Not authorized" });
+    const updated = await Certification.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updated);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 });
 
-// DELETE cert (only owner)
 router.delete("/:id", authMiddleware, async (req, res) => {
   try {
-    const cert = await Certification.findOne({
-      _id: req.params.id,
-      username: req.user.username
-    });
-
-    if (!cert) {
-      return res.status(403).json({ message: "Not authorized" });
-    }
-
-    await Certification.findByIdAndDelete(req.params.id);
-    res.json({ message: "Deleted" });
+    const cert = await Certification.findById(req.params.id);
+    if (!cert) return res.status(404).json({ message: "Not found" });
+    if (cert.user.toString() !== req.user.id) return res.status(403).json({ message: "Not authorized" });
+    await cert.deleteOne();
+    res.json({ message: "Certification deleted" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

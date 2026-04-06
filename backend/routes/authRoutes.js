@@ -16,7 +16,7 @@ const createToken = (userId) => {
 router.post("/register", async (req, res) => {
   try {
     console.log("REGISTER HIT", req.body);
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
 
     if (!username || !email || !password) {
       return res.status(400).json({ message: "Username, email, and password are required" });
@@ -33,7 +33,8 @@ router.post("/register", async (req, res) => {
     const user = await User.create({
       username: username.trim(),
       email: normalizedEmail,
-      passwordHash: hashPassword(password)
+      passwordHash: hashPassword(password),
+      role
     });
 
     const token = createToken(user._id.toString());
@@ -43,7 +44,8 @@ router.post("/register", async (req, res) => {
       user: {
         id: user._id,
         username: user.username,
-        email: user.email
+        email: user.email,
+        role: user.role
       }
     });
   } catch (error) {
@@ -81,7 +83,8 @@ router.post("/login", async (req, res) => {
       user: {
         id: user._id,
         username: user.username,
-        email: user.email
+        email: user.email,
+        role: user.role
       }
     });
   } catch (error) {

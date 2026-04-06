@@ -7,7 +7,8 @@ function RegisterPage() {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    password: ""
+    password: "",
+    role: "" 
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -123,6 +124,25 @@ function RegisterPage() {
                 style={styles.input}
               />
             </div>
+
+            <div style={styles.inputGroup}>
+              
+            <label htmlFor="role" style={styles.label}>
+              Account Type
+            </label>
+            <select
+              id="role"
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              required
+              style={styles.input}
+            >
+              <option value="">Select account type</option>
+              <option value="user">Standard User</option>
+              <option value="admin">Admin User</option>
+            </select>
+          </div>
 
             {error && <p style={styles.error}>{error}</p>}
 
