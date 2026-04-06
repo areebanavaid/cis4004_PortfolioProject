@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+// This page is shown immediately after login/registration to welcome the user and prompt them to start building their portfolio.
 export default function AdminDashboard() {
   const navigate = useNavigate();
 
