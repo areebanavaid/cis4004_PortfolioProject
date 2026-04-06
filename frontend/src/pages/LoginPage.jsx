@@ -56,15 +56,12 @@ function LoginPage() {
 
           <div style={styles.infoBox}>
             <div style={styles.infoItem}>
-              <span style={styles.infoIcon}>📁</span>
               <span>Manage your projects and achievements</span>
             </div>
             <div style={styles.infoItem}>
-              <span style={styles.infoIcon}>🎓</span>
               <span>Keep your education and experience organized</span>
             </div>
             <div style={styles.infoItem}>
-              <span style={styles.infoIcon}>🚀</span>
               <span>Present yourself with a stronger online presence</span>
             </div>
           </div>
