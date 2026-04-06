@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../services/auth";
-
+// This page allows users to register for a new account. It includes a form for entering username, email, password, and account type (user or admin). The handleSubmit function manages the registration process by calling the registerUser function from the auth service. Upon successful registration, it stores the token and user information in localStorage and navigates to the Get Started page. If there is an error during registration, it displays an error message to the user. The design of the page is modern and visually appealing, with a dark theme and vibrant accents to create an engaging user experience.
 function RegisterPage() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -12,19 +12,19 @@ function RegisterPage() {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
+// Handle input changes for the registration form
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
-
+// Handle form submission to register the user
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-
+// Attempt to register the user using the registerUser function from the auth service
     try {
       const data = await registerUser(formData);
       localStorage.setItem("token", data.token);
@@ -36,7 +36,7 @@ function RegisterPage() {
       setLoading(false);
     }
   };
-
+// Render the registration page UI
   return (
     <div style={styles.page}>
       <div style={styles.overlay}>
@@ -169,6 +169,7 @@ function RegisterPage() {
     </div>
   );
 }
+// Styles for the RegisterPage component
 
 const styles = {
   page: {
@@ -327,3 +328,4 @@ const styles = {
 };
 
 export default RegisterPage;
+ // The RegisterPage component is a React functional component that provides a user interface for new users to create an account on the Portfolio Builder platform. It includes form fields for username, email, password, and account type (user or admin). The component manages form state using the useState hook and handles form submission with an asynchronous function that interacts with the backend API to register the user. The UI is designed with a modern aesthetic, featuring a dark background with vibrant accents and a clean layout to enhance user experience.
