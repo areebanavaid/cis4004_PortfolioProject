@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// This is the landing page of the application, providing an overview of the Portfolio Builder and prompting users to 
+// log in or register to start building their portfolio. It features a modern design with a hero section, key features, and a call-to-action to encourage users to create their portfolio.
+// The HomePage component is a functional React component that renders the landing page of the Portfolio Builder application. It includes a navigation bar, a hero section with a title and description, a preview of key features, and a call-to-action section to encourage users to sign up or log in.
+// The styles object contains CSS-in-JS styles for the HomePage component, defining the layout, colors, typography, and overall design of the page. The design uses a dark theme with vibrant accents to create a modern and visually appealing user interface.
 
 function HomePage() {
   return (
@@ -47,7 +51,7 @@ function HomePage() {
           <h2 style={styles.previewTitle}>Why Use Portfolio Builder?</h2>
 
           <div style={styles.previewItem}>
-            <span style={styles.previewIcon}>💼</span>
+            <span style={styles.previewIcon}>•</span>
             <div>
               <h3 style={styles.previewItemTitle}>Professional Presentation</h3>
               <p style={styles.previewText}>
@@ -58,7 +62,7 @@ function HomePage() {
           </div>
 
           <div style={styles.previewItem}>
-            <span style={styles.previewIcon}>🛠️</span>
+            <span style={styles.previewIcon}>•</span>
             <div>
               <h3 style={styles.previewItemTitle}>Showcase Your Work</h3>
               <p style={styles.previewText}>
@@ -69,7 +73,7 @@ function HomePage() {
           </div>
 
           <div style={styles.previewItem}>
-            <span style={styles.previewIcon}>🚀</span>
+            <span style={styles.previewIcon}>•</span>
             <div>
               <h3 style={styles.previewItemTitle}>Build Your Brand</h3>
               <p style={styles.previewText}>
@@ -165,7 +169,7 @@ function HomePage() {
     </div>
   );
 }
-
+// Styles for the HomePage component, using a modern and clean design with a dark theme and vibrant accents.
 const styles = {
   page: {
     minHeight: "100vh",

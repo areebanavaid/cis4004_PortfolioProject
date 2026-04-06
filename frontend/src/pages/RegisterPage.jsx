@@ -58,15 +58,15 @@ function RegisterPage() {
 
           <div style={styles.infoBox}>
             <div style={styles.infoItem}>
-              <span style={styles.infoIcon}>✨</span>
+              <span style={styles.infoIcon}>•</span>
               <span>Create a polished digital presence</span>
             </div>
             <div style={styles.infoItem}>
-              <span style={styles.infoIcon}>🧠</span>
+              <span style={styles.infoIcon}>•</span>
               <span>Organize your skills and accomplishments</span>
             </div>
             <div style={styles.infoItem}>
-              <span style={styles.infoIcon}>📈</span>
+              <span style={styles.infoIcon}>•</span>
               <span>Present your growth in a more professional way</span>
             </div>
           </div>
