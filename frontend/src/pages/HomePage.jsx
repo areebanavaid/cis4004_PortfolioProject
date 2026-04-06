@@ -51,7 +51,7 @@ function HomePage() {
           <h2 style={styles.previewTitle}>Why Use Portfolio Builder?</h2>
 
           <div style={styles.previewItem}>
-            <span style={styles.previewIcon}>•</span>
+            <span style={styles.previewIcon}>💼</span>
             <div>
               <h3 style={styles.previewItemTitle}>Professional Presentation</h3>
               <p style={styles.previewText}>
@@ -62,7 +62,7 @@ function HomePage() {
           </div>
 
           <div style={styles.previewItem}>
-            <span style={styles.previewIcon}>•</span>
+            <span style={styles.previewIcon}>🛠️</span>
             <div>
               <h3 style={styles.previewItemTitle}>Showcase Your Work</h3>
               <p style={styles.previewText}>
@@ -73,7 +73,7 @@ function HomePage() {
           </div>
 
           <div style={styles.previewItem}>
-            <span style={styles.previewIcon}>•</span>
+            <span style={styles.previewIcon}>🚀</span>
             <div>
               <h3 style={styles.previewItemTitle}>Build Your Brand</h3>
               <p style={styles.previewText}>

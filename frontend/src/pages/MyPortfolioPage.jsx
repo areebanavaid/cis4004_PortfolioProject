@@ -98,7 +98,7 @@ export default function MyPortfolioPage() {
     const updated = await updatePortfolio(portfolio._id, headerForm);
     setPortfolio(updated);
     setEditingHeader(false);
-    setHeaderStatus("Saved");
+    setHeaderStatus("Saved ✓");
     setTimeout(() => setHeaderStatus(""), 2000);
   };
   const handlePicChange = (e) => {
@@ -338,16 +338,16 @@ export default function MyPortfolioPage() {
                               <option>Intermediate</option>
                               <option>Advanced</option>
                             </select>
-                            <button className="mp-icon-btn" onClick={() => saveSkill(skill._id)}>Save</button>
-                            <button className="mp-icon-btn" onClick={() => cancelEditSkill(skill._id)}>Cancel</button>
+                            <button className="mp-icon-btn" onClick={() => saveSkill(skill._id)}>✓</button>
+                            <button className="mp-icon-btn" onClick={() => cancelEditSkill(skill._id)}>✕</button>
                           </div>
                         ) : (
                           <>
                             <span className="mp-skill-name">{skill.name}</span>
                             <div className="mp-skill-right">
                               <span className="mp-skill-dots">{levelDots(skill.level)}</span>
-                              <button className="mp-icon-btn" onClick={() => startEditSkill(skill)} title="Edit">Edit</button>
-                              <button className="mp-icon-btn danger" onClick={() => removeSkill(skill._id)} title="Delete">Delete</button>
+                              <button className="mp-icon-btn" onClick={() => startEditSkill(skill)} title="Edit">✎</button>
+                              <button className="mp-icon-btn danger" onClick={() => removeSkill(skill._id)} title="Delete">✕</button>
                             </div>
                           </>
                         )}
