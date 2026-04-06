@@ -24,7 +24,7 @@ router.get("/users", authMiddleware, adminOnly, async (req, res) => {
   }
 });
 
-// ✅ DELETE user
+
 router.delete("/users/:id", authMiddleware, adminOnly, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
