@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import DashboardLayout from "./components/DashboardLayout";
+import HomePage from "./pages/HomePage";
 import GetStartedPage from "./pages/GetStartedPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import EducationPage from "./pages/EducationPage";
@@ -15,14 +16,15 @@ import PortfolioModerationPage from "./pages/PortfolioModerationPage";
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
-  return token ? children : <Navigate to="/" replace />;
+  return token ? children : <Navigate to="/login" replace />;
 }
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
 
         <Route
