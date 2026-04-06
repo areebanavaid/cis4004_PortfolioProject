@@ -16,6 +16,7 @@ export default function DashboardLayout() {
           <NavLink to="/admin">Admin Dashboard</NavLink>
           <NavLink to="/admin/users">Manage Users</NavLink>
           <NavLink to="/admin/portfolios">Moderate Portfolios</NavLink>
+          <Link to="/portfolio/certifications">Certifications</Link>
         </nav>
         <button
           className="logout-btn"
