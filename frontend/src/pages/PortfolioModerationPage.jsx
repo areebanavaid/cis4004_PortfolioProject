@@ -5,7 +5,7 @@ export default function PortfolioModerationPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
-  // ✅ added delete function
+  // Delete function
   const deletePortfolio = async (id) => {
     try {
       const res = await fetch(`/api/admin/portfolios/${id}`, {
@@ -99,7 +99,6 @@ export default function PortfolioModerationPage() {
               <strong>Website:</strong> {portfolio.website || "None"}
             </p>
 
-            {/* ✅ ONLY ADDITION */}
             <button
               onClick={() => deletePortfolio(portfolio._id)}
               style={{
