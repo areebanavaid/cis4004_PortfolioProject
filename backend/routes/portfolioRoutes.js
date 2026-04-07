@@ -3,6 +3,7 @@ const router = express.Router();
 const Portfolio = require("../models/Portfolio");
 const authMiddleware = require("../middleware/authMiddleware");
 
+// GET portfolio - fetch all portfolio records for the logged-in user
 router.get("/", authMiddleware, async (req, res) => {
   try {
     let portfolio = await Portfolio.findOne({ user: req.user.id });
@@ -17,6 +18,7 @@ router.get("/", authMiddleware, async (req, res) => {
   }
 });
 
+// PUT portfolio - update an existing portfolio record
 router.put("/:id", authMiddleware, async (req, res) => {
   try {
     const portfolio = await Portfolio.findById(req.params.id);

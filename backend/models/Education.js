@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
+// DB Schema for education - defines structure of education data in MongoDB
 const educationSchema = new mongoose.Schema(
   {
+    // reference to the user who owns this education record
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -32,7 +34,7 @@ const educationSchema = new mongoose.Schema(
       default: ""
     }
   },
-  { timestamps: true }
+  { timestamps: true } // automatically adds createdAt and updatedAt timestamps
 );
 
 module.exports = mongoose.model("Education", educationSchema);
