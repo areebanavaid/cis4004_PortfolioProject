@@ -10,22 +10,22 @@ import ProjectsPage from "./pages/ProjectsPage";
 import CertificationPage from "./pages/CertificationPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
 import AdminDashboard from "./pages/AdminDashboard";
 import UserManagementPage from "./pages/UserManagementPage";
 import PortfolioModerationPage from "./pages/PortfolioModerationPage";
-// The ProtectedRoute component is a higher-order component that checks if the user is authenticated by looking for a token in localStorage. If the token exists, it renders the child components; otherwise, it redirects the user to the login page. This component is used to protect routes that require authentication, ensuring that only logged-in users can access certain pages of the application.
-// The App component is the main entry point of the React application. It sets up the routing for the application using React Router. It defines various routes for different pages, including protected routes that require authentication. The component uses the BrowserRouter to manage routing and the Routes and Route components to define the paths and their corresponding components. The ProtectedRoute component is used to wrap routes that should only be accessible to authenticated users, ensuring that unauthorized access is prevented.
+
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
-  return token ? children : <Navigate to="/" replace />;
+  return token ? children : <Navigate to="/login" replace />;
 }
-// The App component is the main entry point of the React application. It sets up the routing for the application using React Router. It defines various routes for different pages, including protected routes that require authentication. The component uses the BrowserRouter to manage routing and the Routes and Route components to define the paths and their corresponding components. The ProtectedRoute component is used to wrap routes that should only be accessible to authenticated users, ensuring that unauthorized access is prevented.
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
 
         <Route
@@ -53,7 +53,6 @@ function App() {
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="certifications" element={<CertificationPage />} />
         </Route>
-
 
         <Route
           path="/admin"
