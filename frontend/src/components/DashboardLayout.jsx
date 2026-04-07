@@ -13,6 +13,7 @@ export default function DashboardLayout() {
           <NavLink to="/portfolio/projects">Projects</NavLink>
           <NavLink to="/portfolio/education">Education</NavLink>
           <NavLink to="/portfolio/experience">Experience</NavLink>
+          <NavLink to="/portfolio/certifications">Certifications</NavLink>
           <NavLink to="/admin">Admin Dashboard</NavLink>
           <NavLink to="/admin/users">Manage Users</NavLink>
           <NavLink to="/admin/portfolios">Moderate Portfolios</NavLink>

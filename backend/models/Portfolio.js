@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
+// DB schema for portfolio - defines structure of portfolio data in MongoDB
 const portfolioSchema = new mongoose.Schema(
   {
+    // reference to the user who owns this portfolio record
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

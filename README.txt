@@ -52,8 +52,6 @@ following contents:
 3. Start the server:
 
      npm start          ← standard
-     npm run dev        ← if nodemon is configured (auto-restart)
-
 The backend API will be running at:
 
      http://localhost:5000
@@ -62,7 +60,7 @@ The backend API will be running at:
   B. STARTING THE FRONTEND (React Application)
 ────────────────────────────────────────────────────────────────
 
-Yes, a second server is required for the React frontend.
+A second server is required for the React frontend.
 
 1. Open a NEW terminal and navigate to the frontend folder:
 
@@ -96,17 +94,18 @@ APPLICATION FLOW:
   2. After login you will be directed to the dashboard
 
   3. Standard User pages (sidebar navigation):
-       /portfolio/me       ← Full portfolio view (read + edit)
+       /portfolio/MyPortfolio       ← Full portfolio view (read + edit, you can only edit exist entries on this page)
        /portfolio          ← Portfolio overview / bio editor
        /portfolio/skills       ← Manage skills
        /portfolio/projects     ← Manage projects
        /portfolio/education    ← Manage education
        /portfolio/experience   ← Manage experience
+       /portfolio/certifications ← Manage certifications
 
   4. Administrator pages:
        /admin              ← Admin dashboard
-       /admin/users        ← Manage all users
-       /admin/portfolios   ← View all portfolios
+       /admin/users        ← Manage all users, delete users
+       /admin/portfolios   ← View all portfolios, delete portfolios
 
 TEST ACCOUNTS (create these via the Register page):
 
@@ -152,18 +151,20 @@ Many-to-Many relationship: Projects ↔ Skills
   │   ├── models/           User, Portfolio, Project, Skill,
   │   │                     Education, Experience, Certification
   │   ├── routes/           auth, portfolio, project, skill,
-  │   │                     education, experience
+  │   │                     education, experience, certification, admin
   │   ├── .env              ← you create this
   │   └── server.js
   │
   └── frontend/
       └── src/
-          ├── components/   DashboardLayout.jsx
-          ├── pages/        LoginPage, GetStartedPage,
-          │                 MyPortfolioPage, SkillsPage,
-          │                 ProjectsPage, EducationPage,
-          │                 ExperiencePage, PortfolioPage
+          ├── components/   DashboardLayout.jsx, DashboardLayout.css
+          ├── pages/        AdminDashboard, CertificationPage, EducationPage,
+                            ExperiencePage, GetStartedPage, HomePage, LoginPage,
+                            MyPortfolioPage, PortfolioModerationpage, PortfolioPage,
+                            ProjectsPage, RegisterPage, SkillsPage, UserManagementPage
           └── services/     api.js, skillService.js,
-                            projectService.js
+                            projectService.js, auth.js
+          └── App.css
+          └── App.js
 
 ════════════════════════════════════════════════════════════════
