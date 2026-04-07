@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/auth";
+// This page allows users to log in to their account. It includes a form for entering email and password, and handles authentication by calling the loginUser function from the auth service. Upon successful login, it stores the token and user information in localStorage and navigates to the Get Started page. If there is an error during login, it displays an error message to the user.
+// The LoginPage component is a functional React component that renders the login page of the Portfolio Builder application. It includes a form for users to enter their email and password, and handles the login process by calling the loginUser function from the auth service. The component also manages state for form data, error messages, and loading status, providing feedback to the user during the login process. The design of the page is modern and visually appealing, with a dark theme and vibrant accents to create an engaging user experience.
+// The styles object contains CSS-in-JS styles for the LoginPage component, defining the layout, colors, typography, and overall design of the page. The design uses a dark theme with vibrant accents to create a modern and visually appealing user interface. The styles include properties for the page layout, form elements, buttons, error messages, and other UI components to ensure a cohesive and polished look for the login page.
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -10,19 +13,19 @@ function LoginPage() {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
+// Handle input changes for the login form
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
-
+// Handle form submission to log in the user
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-
+// Attempt to log in the user using the loginUser function from the auth service
     try {
       const data = await loginUser(formData);
       localStorage.setItem("token", data.token);
@@ -34,7 +37,7 @@ function LoginPage() {
       setLoading(false);
     }
   };
-
+// Render the login page UI
   return (
     <div style={styles.page}>
       <div style={styles.overlay}>
@@ -56,15 +59,12 @@ function LoginPage() {
 
           <div style={styles.infoBox}>
             <div style={styles.infoItem}>
-              <span style={styles.infoIcon}>📁</span>
               <span>Manage your projects and achievements</span>
             </div>
             <div style={styles.infoItem}>
-              <span style={styles.infoIcon}>🎓</span>
               <span>Keep your education and experience organized</span>
             </div>
             <div style={styles.infoItem}>
-              <span style={styles.infoIcon}>🚀</span>
               <span>Present yourself with a stronger online presence</span>
             </div>
           </div>

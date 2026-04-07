@@ -24,7 +24,7 @@ export default function PortfolioPage() {
       website: data.website || ""
     });
   };
-
+// The handleChange function is a common pattern in React for handling form input changes. It takes the event object as an argument and updates the formData state by creating a new object that spreads the existing formData and then updates the specific field that changed based on the name attribute of the input element. This allows for a single change handler to manage multiple form fields without needing separate handlers for each field.
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
