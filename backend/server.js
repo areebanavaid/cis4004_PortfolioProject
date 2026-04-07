@@ -11,7 +11,7 @@ const projectRoutes = require("./routes/projectRoutes");
 const skillRoutes = require("./routes/skillRoutes");
 const certificationRoutes = require("./routes/certificationRoutes");
 const authRoutes = require("./routes/authRoutes");
-const adminRoutes = require("./routes/adminRoutes");
+const adminRoutes = require("./routes/adminroutes");
 
 const app = express();
 

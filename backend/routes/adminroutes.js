@@ -24,7 +24,7 @@ router.get("/users", authMiddleware, adminOnly, async (req, res) => {
   }
 });
 
-// ✅ DELETE user
+// DELETE user
 router.delete("/users/:id", authMiddleware, adminOnly, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -51,7 +51,7 @@ router.get("/portfolios", authMiddleware, adminOnly, async (req, res) => {
   }
 });
 
-// DELETE portfolio
+// DELETE portfolio record
 router.delete("/portfolios/:id", authMiddleware, adminOnly, async (req, res) => {
   try {
     const portfolio = await Portfolio.findById(req.params.id);

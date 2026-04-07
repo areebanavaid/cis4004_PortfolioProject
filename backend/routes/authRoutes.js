@@ -5,19 +5,24 @@ const User = require("../models/User");
 
 const router = express.Router();
 
+// Hash the password before saving it
 const hashPassword = (password) => {
   return crypto.createHash("sha256").update(password).digest("hex");
 };
 
+// Create a JWT token so the user stays logged in
 const createToken = (userId) => {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: "7d" });
 };
 
+
+// Register new user account
 router.post("/register", async (req, res) => {
   try {
     console.log("REGISTER HIT", req.body);
-    const { username, email, password, role } = req.body;
+    const { username, email, password, role } = req.body; // Get data from request
 
+    // Make sure required fields exist
     if (!username || !email || !password) {
       return res.status(400).json({ message: "Username, email, and password are required" });
     }
