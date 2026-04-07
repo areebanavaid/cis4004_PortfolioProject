@@ -5,6 +5,26 @@ export default function PortfolioModerationPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
+  // ✅ added delete function
+  const deletePortfolio = async (id) => {
+    try {
+      const res = await fetch(`/api/admin/portfolios/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.message);
+
+      setPortfolios(portfolios.filter((p) => p._id !== id));
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
   useEffect(() => {
     const loadPortfolios = async () => {
       try {
@@ -78,6 +98,22 @@ export default function PortfolioModerationPage() {
             <p>
               <strong>Website:</strong> {portfolio.website || "None"}
             </p>
+
+            {/* ✅ ONLY ADDITION */}
+            <button
+              onClick={() => deletePortfolio(portfolio._id)}
+              style={{
+                marginTop: "12px",
+                padding: "8px 12px",
+                background: "#ef4444",
+                color: "white",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer"
+              }}
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>

@@ -9,8 +9,9 @@ const educationRoutes = require("./routes/educationRoutes");
 const experienceRoutes = require("./routes/experienceRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const skillRoutes = require("./routes/skillRoutes");
+const certificationRoutes = require("./routes/certificationRoutes");
 const authRoutes = require("./routes/authRoutes");
-const adminRoutes = require("./routes/adminRoutes");
+const adminRoutes = require("./routes/adminroutes");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use("/api/education", educationRoutes);
 app.use("/api/experience", experienceRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/skills", skillRoutes);
+app.use("/api/certifications", certificationRoutes);
 app.use("/api/admin", adminRoutes);
 
 app.get("/", (req, res) => {

@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
+// DB Schema for experience - defines structure of experience data in MongoDB
 const experienceSchema = new mongoose.Schema(
   {
+    // reference to the user who owns this experience record
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

@@ -33,7 +33,7 @@ router.post("/", authMiddleware, async (req, res) => {
   }
 });
 
-// UPDATE project
+// UPDATE project - updae an existing record 
 router.put("/:id", authMiddleware, async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
@@ -64,7 +64,7 @@ router.put("/:id", authMiddleware, async (req, res) => {
   }
 });
 
-// DELETE project
+// DELETE project - delete a existing project record
 router.delete("/:id", authMiddleware, async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
