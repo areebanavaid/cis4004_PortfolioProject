@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchExperience, createExperience, deleteExperience } from "../services/api";
+// This page allows users to add, view, and delete their work experience as part of their portfolio.
+// It fetches the user's experience entries from the backend, displays them, and provides a form to add new experience.
+// The experience entries include company name, job title, start and end dates, and a description of the role.
 
 export default function ExperiencePage() {
   const [experienceList, setExperienceList] = useState([]);
@@ -10,7 +13,7 @@ export default function ExperiencePage() {
     endDate: "",
     description: ""
   });
-
+// Load experience entries when the component mounts
   useEffect(() => {
     loadExperience();
   }, []);
@@ -19,11 +22,11 @@ export default function ExperiencePage() {
     const data = await fetchExperience();
     setExperienceList(data);
   };
-
+// Handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+//  Handle form submission to add a new experience entry
   const handleSubmit = async (e) => {
     e.preventDefault();
     await createExperience(formData);
@@ -36,7 +39,7 @@ export default function ExperiencePage() {
     });
     loadExperience();
   };
-
+// Handle deletion of an experience entry
   const handleDelete = async (id) => {
     await deleteExperience(id);
     loadExperience();

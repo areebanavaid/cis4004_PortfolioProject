@@ -9,7 +9,7 @@ import {
 import { getSkills, updateSkill, deleteSkill } from "../services/skillService";
 import { getProjects, updateProject, deleteProject } from "../services/projectService";
 import "./MyPortfolioPage.css";
-
+// The MyPortfolioPage component is the main page for users to view and edit their portfolio. It fetches and displays the user's portfolio information, including their header, experience, education, skills, projects, and certifications. Users can edit each section of their portfolio, and the component handles the logic for saving changes and updating the UI accordingly. The component also includes a loading state while fetching data and provides feedback to the user when changes are saved. The design of the page is modern and visually appealing, with a focus on usability and a clean layout to showcase the user's portfolio effectively.
 const levelDots = (level) => {
   const map = { Beginner: 1, Intermediate: 2, Advanced: 3 };
   const filled = map[level] || 1;
@@ -17,7 +17,7 @@ const levelDots = (level) => {
     <span key={i} className={`dot ${i <= filled ? "filled" : ""}`} />
   ));
 };
-
+// Handle form submission to add a new certification
 function SaveBar({ onSave, onCancel, status }) {
   return (
     <div className="save-bar">
@@ -27,7 +27,7 @@ function SaveBar({ onSave, onCancel, status }) {
     </div>
   );
 }
-
+// The MyPortfolioPage component is the main page for users to view and edit their portfolio. It fetches and displays the user's portfolio information, including their header, experience, education, skills, projects, and certifications. Users can edit each section of their portfolio, and the component handles the logic for saving changes and updating the UI accordingly. The component also includes a loading state while fetching data and provides feedback to the user when changes are saved. The design of the page is modern and visually appealing, with a focus on usability and a clean layout to showcase the user's portfolio effectively.
 export default function MyPortfolioPage() {
   const [portfolio, setPortfolio]   = useState(null);
   const [education, setEducation]   = useState([]);
@@ -36,7 +36,7 @@ export default function MyPortfolioPage() {
   const [projects, setProjects]     = useState([]);
   const [certs, setCerts]           = useState([]);
   const [loading, setLoading]       = useState(true);
-
+// State variables for managing editing states and form data for each section of the portfolio. This allows the component to track which section is being edited and manage the corresponding form data for that section. The editing states are used to conditionally render the appropriate UI for editing or viewing each section of the portfolio, while the form data state variables hold the current values being edited by the user before they are saved.
   const [editingHeader, setEditingHeader] = useState(false);
   const [headerForm, setHeaderForm]       = useState({});
   const [headerStatus, setHeaderStatus]   = useState("");
@@ -47,7 +47,7 @@ export default function MyPortfolioPage() {
   const [editingSkill, setEditingSkill] = useState({});
   const [editingProj,  setEditingProj]  = useState({});
   const [editingCert,  setEditingCert]  = useState({});
-
+// Get token from localStorage for authenticated API requests
   const authHeader = { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } };
 
   useEffect(() => { loadAll(); }, []);
@@ -93,7 +93,7 @@ export default function MyPortfolioPage() {
     setLoading(false);
   };
 
-  // header
+  // header 
   const saveHeader = async () => {
     const updated = await updatePortfolio(portfolio._id, headerForm);
     setPortfolio(updated);
